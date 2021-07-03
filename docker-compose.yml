@@ -1,0 +1,8 @@
+services:
+    openvino-db:
+        image: mysql/mysql-server:latest
+        container_name: database
+        ports:
+            - 3373:3373
+        expose:
+            - 3373
