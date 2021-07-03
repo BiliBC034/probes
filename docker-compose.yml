@@ -1,3 +1,4 @@
+version: "3.7"
 services:
     openvino-db:
         image: mysql/mysql-server:latest
@@ -6,3 +7,22 @@ services:
             - 3373:3373
         expose:
             - 3373
+         working_dir: .
+    volumes:
+      - .
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - todo-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+volumes:
+  todo-mysql-data:
